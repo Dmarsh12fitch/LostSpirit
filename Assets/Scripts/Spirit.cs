@@ -8,9 +8,14 @@ public class Spirit : MonoBehaviour
 
     public Rigidbody spiritRigidbody;
     public float spiritSpeed = 5;
+    public float spiritWillPower = 11;
+
+    public float spiritAttackDamage = 5;
+    public float spiritHealth = 50;
+
     //other things
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +25,15 @@ public class Spirit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && playerControllerScript.isDashing)
         {
-            playerControllerScript.PossessThisEnemy(collision.gameObject);
+            if(collision.gameObject.GetComponent<Enemy>().enemyWillPower <= 0)
+            {
+                playerControllerScript.PossessThisEnemy(collision.gameObject);
+            } else
+            {
+                collision.gameObject.GetComponent<Enemy>().enemyWillPower -= 1;
+            }
         }
     }
 
