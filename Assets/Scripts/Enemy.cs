@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     public float enemyAttackDamage = 5;
     public float enemyHealth = 10;
-    public float enemyArmor = 12;
+    public float enemyArmor = 12;       //NONE FOR NOW
 
     public bool canGrabObjects;
     public GameObject grabbedObject;
@@ -31,10 +31,10 @@ public class Enemy : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //check for player within range
-        //move enemy closer to enemy or not
+        //move enemy closer to player if in range. if not randomly move
         //charge up and then attack player when within range
     }
 
@@ -49,5 +49,21 @@ public class Enemy : MonoBehaviour
     {
         grabbedObject.transform.parent = null;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

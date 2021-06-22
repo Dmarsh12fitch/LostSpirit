@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDashing)
         {
-            playerRigidbody.velocity = new Vector3(moveDirection.x * playerSpeed, 0, moveDirection.y * playerSpeed);
+            playerRigidbody.velocity = new Vector3(moveDirection.x * playerSpeed, 0.0f, moveDirection.y * playerSpeed);
         }
     }
 
