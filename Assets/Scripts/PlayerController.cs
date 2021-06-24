@@ -109,6 +109,9 @@ public class PlayerController : MonoBehaviour
         if (!isDashing)
         {
             playerRigidbody.velocity = new Vector3(moveDirection.x * playerSpeed, 0.0f, moveDirection.y * playerSpeed);
+        } else
+        {
+            playerRigidbody.velocity = dashVelocity;
         }
     }
 
@@ -174,25 +177,25 @@ public class PlayerController : MonoBehaviour
     {
         if (facingDirection.Equals(direction.Up))
         {
-            dashVelocity = new Vector3(0, 0, 100);
+            dashVelocity = new Vector3(0, 0, 25);
         } else if (facingDirection.Equals(direction.Down))
         {
-            dashVelocity = new Vector3(0, 0, -100);
+            dashVelocity = new Vector3(0, 0, -25);
         } else if (facingDirection.Equals(direction.Left))
         {
-            dashVelocity = new Vector3(-100, 0, 0);
+            dashVelocity = new Vector3(-25, 0, 0);
         } else //then Right
         {
-            dashVelocity = new Vector3(100, 0, 0);
+            dashVelocity = new Vector3(25, 0, 0);
         }
-        playerRigidbody.AddForce(dashVelocity, ForceMode.Impulse);
+        playerRigidbody.velocity = dashVelocity;
         isDashing = true;
         StartCoroutine(dashCountdown());
     }
 
     IEnumerator dashCountdown()
     {
-        yield return new WaitForSeconds(1);     //better tme than this
+        yield return new WaitForSeconds(0.07f);     //better tme than this
         isDashing = false;
     }
 

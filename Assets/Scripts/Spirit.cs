@@ -7,7 +7,7 @@ public class Spirit : MonoBehaviour
     private PlayerController playerControllerScript;
 
     public Rigidbody spiritRigidbody;
-    public float spiritSpeed = 5;
+    public float spiritSpeed = 7;
     public float spiritWillPower = 11;
 
     public float spiritAttackDamage = 5;
@@ -34,6 +34,10 @@ public class Spirit : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Enemy>().enemyWillPower -= 1;
             }
+        }
+        if(playerControllerScript.isDashing && !collision.gameObject.CompareTag("Floor"))
+        {
+            playerControllerScript.isDashing = false;
         }
     }
 
